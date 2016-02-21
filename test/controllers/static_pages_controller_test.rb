@@ -10,7 +10,7 @@ class StaticPagesControllerTest < ActionController::TestCase
   test "should get about" do
       get :about
       assert_response :success
-      assert_select "title", "About WorkIt"
+      assert_select "title", "About Workit"
   end
 
   test "should get help" do
@@ -25,4 +25,9 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_select "title", "Contact Us"
   end
 
+  test "should get login" do
+    get :login
+    assert_response :success
+    assert_select "title", "Log in"
+  end
 end
