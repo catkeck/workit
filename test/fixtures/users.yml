@@ -3,8 +3,11 @@ caitlin:
   email: caitlin@gmail.com
   password_digest: <%= User.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 rei:
   name: Rei Suzuki
   email: raysuzuki@gmail.com
   password_digest: <%= User.digest('password') %>
+  activated_at: <%= Time.zone.now %>

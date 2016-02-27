@@ -1,1 +1,1 @@
-User.create!(name: "Caitlin Keck", email: "caitlin.keck@gmail.com". password: "blooble", password_confirmation: "blooble", admin: true)
+User.create!(name: "Caitlin Keck", email: "caitlin.keck@gmail.com", password: "blooble", password_confirmation: "blooble", admin: true, activated: true, activated_at: Time.zone.now)
