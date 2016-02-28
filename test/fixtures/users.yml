@@ -11,3 +11,4 @@ rei:
   email: raysuzuki@gmail.com
   password_digest: <%= User.digest('password') %>
   activated_at: <%= Time.zone.now %>
+

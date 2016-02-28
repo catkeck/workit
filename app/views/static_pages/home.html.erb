@@ -1,12 +1,23 @@
 <% provide(:title, "Home") %>
 
+<% if logged_in? %>
 <div class="center jumbotron">
-  <h1> Get fit! </h1>
-
-
-  <%= link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary" %>
+  <h1> Welcome Back! </h1>
+  <div class="row">
+    <div class="col-md-8">
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
 </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1> Get fit! </h1>
 
-<div id="cover_page_image">
-  <%= image_tag("workit.jpg", width: 100) %>
-</div>
+
+    <%= link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary" %>
+  </div>
+
+  <div id="cover_page_image">
+    <%= image_tag("workit.jpg", width: 100) %>
+  </div>
+<% end %>

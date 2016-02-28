@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+icecream:
+  content: "I just ate 50 gallons of ice cream"
+  created_at: <%= 50.minutes.ago %>
+  user: caitlin
+
+lost_weight:
+  content: "I finally got to my weekly goal of 120 pounds!"
+  created_at: <%= 51.minutes.ago %>
+  user: caitlin
+
+most_recent:
+  content: "I just ate a burrito, or 2, or 5..."
+  created_at: <%= 49.minutes.ago %>
+  user: caitlin
+
+large_consumption:
+  content: "I gained so much in so little time..."
+  created_at: <%= 80.minutes.ago %>
+  user: david
