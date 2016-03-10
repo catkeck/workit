@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228044055) do
+ActiveRecord::Schema.define(version: 20160310024009) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "friend_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"

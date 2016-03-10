@@ -11,6 +11,14 @@ $gray-medium-light: #eaeaea;
   box-sizing: border-box;
 }
 
+/* friends list */
+
+.friends {
+  li {
+    list-style-type: none;
+  }
+}
+
 /* header */
 
 #logo {
