@@ -12,6 +12,9 @@
   <div class="col-md-8">
   <% if @user.microposts.any? %>
     <h3>Comments </h3>
+    <section class = "micropost form">
+      <%= render 'shared/micropost_form'%>
+    </section>
     <ol class="microposts">
       <%= render @microposts %>
     </ol>
