@@ -7,6 +7,11 @@
         <%= @user.name %>
       </h1>
     </section>
+    <% for friend in @user.friends %>
+     <li><%= gravatar_for friend, size: 20 %>
+     <%= link_to friend.name, user_path(friend) %></li>
+     </br>
+  <% end %>
    <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
   </aside>
   <div class="col-md-8">
