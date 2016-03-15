@@ -12,9 +12,10 @@
      <%= link_to friend.name, user_path(friend) %></li>
      </br>
   <% end %>
-   <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+   
   </aside>
   <div class="col-md-8">
+  <%= render 'add_friend_form' if logged_in? %>
   <% if @user.microposts.any? %>
     <h3>Comments </h3>
     <section class = "micropost form">

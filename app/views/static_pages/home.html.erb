@@ -6,8 +6,14 @@
   </div>
   <div class="friends">
     <% for user in current_user.friends %>
-     <li><%= gravatar_for user, size: 20 %>
-     <%= link_to user.name, user_path(user) %></li>
+     <li> <%= link_to user_path(user) do %>
+      <%= gravatar_for user, size: 100 %>
+     <% end %>
+     </br>
+     </br>
+     </br>
+     </br>
+     </br>
      </br>
   <% end %>
   </div>

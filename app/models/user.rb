@@ -73,16 +73,32 @@ class User < ActiveRecord::Base
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
-    
-    def password_reset_expired?
-      reset_sent_at < 2.hours.ago
-    end
+  
+  #checks if password reset ability has expired  
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
 
-    #Makes it so users you follow feed into your comment page
-    def feed
-      Micropost.where("user_id = ?", id)
-    end
+  #Makes it so users you follow feed into your comment page
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
     
+  #adds a friend
+  def add_friend(other_user)
+    friendships.create(friend_id: other_user.id)
+  end
+
+  #unfriends someone
+  def unfriend(other_user)
+    friendships.find_by(friend_id: other_user.id).destroy
+  end
+
+  #checks if other person is friends with current user
+  def friended?(other_user)
+    friends.include?(other_user)
+  end
+
   private
 
     #Converts email to all lower-case

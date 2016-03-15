@@ -81,4 +81,16 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should add and remove friend" do
+    caitlin = users(:caitlin)
+    rei = users(:rei)
+    assert_not caitlin.friends?(rei)
+    caitlin.add_friend(rei)
+    assert caitlin.friends?(rei)
+    assert caitlin.friends.include?(rei)
+    caitlin.unfriend(rei)
+    assert_not caitlin.friends?(rei)
+  end
+
 end
