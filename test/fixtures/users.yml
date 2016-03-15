@@ -1,6 +1,7 @@
 caitlin:
   name: Caitlin Example
   email: caitlin@gmail.com
+  current_weight: 140
   password_digest: <%= User.digest('password') %>
   admin: true
   activated: true
@@ -9,6 +10,7 @@ caitlin:
 rei:
   name: Rei Suzuki
   email: raysuzuki@gmail.com
+  current_weight: 150
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>

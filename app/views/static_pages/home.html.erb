@@ -3,6 +3,8 @@
 <% if logged_in? %>
   <div class="center jumbotron">
     <h1> Welcome Back <%=current_user.name %>!</h1>
+    <h2> <%= gravatar_for current_user, size: 80 %>
+    Current Weight: <%= current_user.current_weight %> </h2>
   </div>
   <div class="friends">
     <% for user in current_user.friends %>

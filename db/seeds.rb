@@ -2,6 +2,7 @@ User.create!(name: "Caitlin Keck",
              email: "caitlin.keck@gmail.com", 
              password: "blooble", 
              password_confirmation: "blooble", 
+             current_weight: 140,
              admin: true, 
              activated: true, 
              activated_at: Time.zone.now)
@@ -9,7 +10,8 @@ User.create!(name: "Caitlin Keck",
 User.create!(name: "Rei Suzuki", 
              email: "raysuzuki@gmail.com", 
              password: "flooble", 
-             password_confirmation: "flooble", 
+             password_confirmation: "flooble",
+             current_weight: 150, 
              activated: true, 
              activated_at: Time.zone.now)
 
@@ -21,6 +23,7 @@ User.create!(name: "Rei Suzuki",
                email: email,
                password:              password,
                password_confirmation: password,
+               current_weight: 100+Random.rand(100),
                activated: true,
                activated_at: Time.zone.now)
 end

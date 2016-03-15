@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :friendships
   has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :through => :friendships
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :weights
   before_save :downcase_email
   before_create :create_activation_digest
 
