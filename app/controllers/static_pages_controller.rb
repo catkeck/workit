@@ -3,6 +3,8 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @feed_items = current_user.feed.paginate(page: params[:page])
       @user = current_user.id
+      @weights = Weight.where(user_id: @user)
+      @weight = @weights.order("created_at").last
       @microposts = current_user.microposts.paginate(page: params[:page])
     else
       @feed_items = []

@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @micropost = current_user.microposts.build if logged_in?
     @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
+    @weights = Weight.where(user_id: @user.id)
+    @weight = @weights.order("created_at").last
   end
 
   def new
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_weight)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     #confirms if user is logged in
