@@ -23,8 +23,10 @@ class WeightsController < ApplicationController
 
   def roll
     Users.each { |user|
-      if user.current_weight.present?
-        Weight.new(weight: user[:current_weight], date: Date.yesterday, user_id: user.id]
+      @weights = Weight.where(user_id: user)
+      @weight = @weights.order("created_at").last
+      if @weight.present?
+        Weight.new(weight: weight[:weight], date: Date.yesterday, user_id: user.id]
       end
     }
   end
