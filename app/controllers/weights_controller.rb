@@ -26,7 +26,7 @@ class WeightsController < ApplicationController
       @weights = Weight.where(user_id: user)
       @weight = @weights.order("created_at").last
       if @weight.present?
-        Weight.new(weight: weight[:weight], date: Date.yesterday, user_id: user.id]
+        Weight.new(weight: @weight.weight, date: Date.yesterday, user_id: user.id)
       end
     }
   end

@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* variables */
 
 $gray-medium-light: #eaeaea;
@@ -23,8 +24,8 @@ $gray-medium-light: #eaeaea;
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  margin-left: 20px;
+  font-size: 1.8em;
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -36,12 +37,9 @@ $gray-medium-light: #eaeaea;
   }
 }
 
+/* cover page */
 #cover_page_image img{
   width: 100%
-}
-
-body {
-  padding-top: 60px;
 }
 
 section {
@@ -79,11 +77,6 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: $gray-light;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
 }
 
 /* footer */
@@ -259,4 +252,115 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+body { 
+  margin:0px 0px; 
+}
+
+.wrapper {
+  margin:0px, 0px;
+}
+/* home page's hero image */
+
+#hero{
+  background-image: url(workit.jpg);
+  background-size:cover;
+  position:relative;
+  height: 75vh;
+}
+
+#content{
+  text-align:center;
+}
+
+#content h2{
+  margin:0px 0px 30px 0px;
+}
+
+#footer{
+  padding:30px 0px;
+  text-align:center;
+  background:#ddd;
+}
+
+/* styles toolbar */
+
+.navbar navbar-fixed-top navbar-inverse {
+  font-family: 'Gotham SSm',sans-serif;
+  letter-spacing: .13em;
+  font-size: 14px;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body {
+  font-family: 'Proxima Nova regular',Arial,sans-serif;
+  letter-spacing: .13em;
+  font-size: 14px;
+}
+
+
+/* styles footer */
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  left: 0;
+  background-color: #222;
+}
+
+/* styles button */
+
+.btn {
+  background-color: #222;
+  border: none;
+  color: #FFF;
+  padding: 1em 1.75em; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  margin: 0 auto;
+  font-size: 30px;
+}
+
+.btn:hover {
+  color: #777;
+}
+
+.welcome {
+  h1 {
+    color: #FFFFFF;
+    font-family: 'Proxima Nova regular',Arial,sans-serif;
+    padding: 2em; 
+    text-align: center;
+    font-size: 100px;
+  }
+}
+
+p {
+  font-family: 'Proxima Nova regular',Arial,sans-serif;
+  padding: 1em;
+  font-size: 20px;
+}
+
+.navbar {
+  padding: 0px !important;
+}
+.container {
+  width: 100%;
+  padding: 0px !important;
+  margin: 0 !important;
+}
+
+.little_image img{
+  width: 50px;
+  margin-top: 50px;
 }

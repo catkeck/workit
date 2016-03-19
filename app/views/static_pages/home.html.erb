@@ -2,35 +2,27 @@
 
 <% if logged_in? %>
   <div class="center jumbotron">
-    <h1> Welcome Back <%=current_user.name %>!</h1> 
+    <h1> Welcome Back!</h1> 
   </div>
-  <h2> <%= gravatar_for current_user, size: 80 %>
+  <h2>  <%=current_user.name %> </h2>
+  <%= gravatar_for current_user, size: 80 %>
   Current Weight: <%= @weight.weight %> </h2>
   <div class="friends">
     <% for user in current_user.friends %>
      <li> <%= link_to user_path(user) do %>
       <%= gravatar_for user, size: 100 %>
      <% end %>
-      <%= line_chart @weights.weight.group(:date).(:weight) %>
-     
-     </br>
-     </br>
-     </br>
-     </br>
-     </br>
-     </br>
   <% end %>
   </div>
-   <%= render 'shared/update_weight' %>
+    <%= render 'shared/update_weight' %>
 <% else %>
-  <div class="center jumbotron">
-    <h1> Get fit! </h1>
-
-
-    <%= link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary" %>
-  </div>
-
-  <div id="cover_page_image">
-    <%= image_tag("workit.jpg", width: 100) %>
-  </div>
+    <%= render 'layouts/hero' %>
+    <div class = "little_image">
+     <%= image_tag('runner.png') %>
+    </div>
+    <div class = "general-text">
+          
+      <p> Get Fit is made to help you to both build and maintain a healthy, fit body. </p>
+      <p> It is a social network for those that share the aspiration to get the body they want. It can be used whether your aspiration is to lose weight, gain weight, or just tone your body. </p>
+    </div>
 <% end %>
