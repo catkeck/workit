@@ -2,6 +2,10 @@
 @import "bootstrap";
 
 
+.navbar navbar-fixed-top navbar-inverse {
+  opacity: 0.8;
+}
+
 /* variables */
 
 $gray-medium-light: #eaeaea;
@@ -133,6 +137,7 @@ aside {
   }
 }
 
+/* gravatar */
 
 .gravatar {
   float: left;
@@ -268,6 +273,7 @@ body {
   background-size:cover;
   position:relative;
   height: 75vh;
+  padding: 0px !important;
 }
 
 #content{
@@ -282,6 +288,7 @@ body {
   padding:30px 0px;
   text-align:center;
   background:#ddd;
+  opacity: 0.4;
 }
 
 /* styles toolbar */
@@ -289,15 +296,15 @@ body {
 .navbar navbar-fixed-top navbar-inverse {
   font-family: 'Gotham SSm',sans-serif;
   letter-spacing: .13em;
-  font-size: 14px;
+  font-size: 10px;
   z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #222;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  margin-right: 5%
 }
 
 body {
@@ -315,14 +322,19 @@ body {
   height: 100px;
   left: 0;
   background-color: #222;
+  :hover {
+    color: #FFF;
+    text-decoration: none;
+  }
 }
+
 
 /* styles button */
 
 .btn {
-  background-color: #222;
-  border: none;
+  border-color: #FFF;
   color: #FFF;
+  border-width: 2px;
   padding: 0.5em 1.5em; 
   margin-left: auto;
   margin-right: auto;
@@ -335,6 +347,17 @@ body {
   color: #777;
 }
 
+/* formats images on home page */
+
+.col-sm-2{
+  img {
+   width: 100%;
+   padding: 1px;
+  }
+  p {
+    color: black;
+  }
+}
 .welcome {
   h1 {
     color: #FFFFFF;
@@ -348,7 +371,7 @@ body {
 p {
   font-family: 'Proxima Nova regular',Arial,sans-serif;
   padding: 1em;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .navbar {
