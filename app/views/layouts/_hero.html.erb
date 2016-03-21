@@ -1,6 +1,9 @@
 <div id="hero">
   <div class="welcome">
     <h1> Welcome </h1>
-    <%= link_to "SIGN UP", new_user_path, class: "btn" %>
+    <% if !logged_in? %>
+      <%= link_to "SIGN UP", new_user_path, class: "btn" %>
+    <% else %>
+    <% end %>
   </div>
 </div>

@@ -329,7 +329,7 @@ body {
 
 /* styles button */
 
-.btn {
+.btn, .btn-primary {
   border-color: #FFF;
   color: #FFF;
   border-width: 2px;
@@ -339,11 +339,14 @@ body {
   margin-top: 2%;
   margin: 0 auto;
   font-size: 15px;
+  background-color: #222
 }
 
-.btn:hover {
+.btn:hover, btn-primary:hover {
   color: #777;
+  background-color: #222
 }
+
 
 /* formats images on home page */
 
@@ -375,6 +378,7 @@ p {
 .navbar {
   padding: 0px !important;
 }
+
 .container {
   width: 100%;
   padding: 0px !important;

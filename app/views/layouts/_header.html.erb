@@ -9,7 +9,7 @@
         <li><%= link_to "ABOUT", about_path %></li>
         <% if logged_in? %>
           <li><%= link_to "USERS", users_path %></li>
-          <li><%= link_to "My PROFILE", current_user %></li>
+          <li><%= link_to "MY PROFILE", current_user %></li>
           <li><%= link_to "SETTINGS", edit_user_path(current_user) %></li>
           <li class="divider"></li>
           <li><%= link_to "LOG OUT", logout_path, method: "delete" %></li>
