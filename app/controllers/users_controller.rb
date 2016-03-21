@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @micropost = current_user.microposts.build if logged_in?
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = Micropost.where(friend_id: @user.id).paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
     @weights = Weight.where(user_id: @user.id)
     @weight = @weights.order("created_at").last

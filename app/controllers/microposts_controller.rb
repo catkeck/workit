@@ -6,10 +6,10 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Comment created!"
-      redirect_to current_user
+      redirect_to user_path(@micropost.friend_id)
     else
       @feed_items = []
-      redirect_to current_user
+      redirect_to user_path(@micropost.friend_id)
     end 
   end
 
@@ -22,7 +22,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :picture)
+      params.require(:micropost).permit(:content, :picture, :friend_id)
     end
 
     def correct_user

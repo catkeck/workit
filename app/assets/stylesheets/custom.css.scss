@@ -2,13 +2,25 @@
 @import "bootstrap";
 
 
-.navbar navbar-fixed-top navbar-inverse {
-  opacity: 0.8;
-}
-
 /* variables */
 
 $gray-medium-light: #eaeaea;
+/* styles toolbar */
+
+.navbar navbar-fixed-top navbar-inverse {
+  font-family: 'Gotham SSm',sans-serif;
+  letter-spacing: .13em;
+  font-size: 10px;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 5%;
+  height: 100px;
+}
+
 
 @mixin box_sizing {
   -moz-box-sizing:  border-box;
@@ -114,6 +126,7 @@ footer {
 aside {
   section.user_info {
     margin-top: 20px;
+    margin-left: 20px;
   }
   section {
     padding: 10px 0;
@@ -291,21 +304,6 @@ body {
   opacity: 0.4;
 }
 
-/* styles toolbar */
-
-.navbar navbar-fixed-top navbar-inverse {
-  font-family: 'Gotham SSm',sans-serif;
-  letter-spacing: .13em;
-  font-size: 10px;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-  margin-right: 5%
-}
 
 body {
   font-family: 'Proxima Nova regular',Arial,sans-serif;
@@ -392,4 +390,11 @@ p {
 .little_image img{
   width: 50px;
   margin-top: 50px;
+}
+
+/*formats users pages */
+
+.friend_page {
+  margin-top: 100px;
+  margin-right: 50px;
 }

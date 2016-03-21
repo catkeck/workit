@@ -2,17 +2,19 @@
 
 <% if logged_in? %>
   <div class="center jumbotron">
-    <h1> Welcome Back!</h1> 
-  </div>
-  <h2>  <%=current_user.name %> </h2>
-  <%= gravatar_for current_user, size: 80 %>
-  Current Weight: <%= @weight.weight %> </h2>
-  <div class="friends">
-    <% for user in current_user.friends %>
-     <li> <%= link_to user_path(user) do %>
-      <%= gravatar_for user, size: 100 %>
-     <% end %>
-  <% end %>
+    <div class="description">
+      <h1> Welcome Back!</h1> 
+    </div>
+    <h2>  <%=current_user.name %> </h2>
+    <%= gravatar_for current_user, size: 80 %>
+    Current Weight: <%= @weight.weight %> </h2>
+    <div class="friends">
+      <% for user in current_user.friends %>
+       <li> <%= link_to user_path(user) do %>
+        <%= gravatar_for user, size: 100 %> </li>
+       <% end %>
+    <% end %>
+    </div>
   </div>
     <%= render 'shared/update_weight' %>
 <% else %>

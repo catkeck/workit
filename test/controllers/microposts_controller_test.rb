@@ -20,12 +20,11 @@ class MicropostsControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
-  test "should redirect destroy for wrong comment" do
+  test "should stay on page after posting comment" do
+    @user = User.find_by_id(5)
     log_in_as(users(:caitlin))
-    micropost = microposts(:large_consumption)
-    assert_no_difference 'Micropost.count' do
-      delete :destroy, id: micropost
-    end
-    assert_redirected_to root_url
+    Micropost.new(content: "boop de doop", friend_id: 5)
+    assert_redirected_to @user
   end
+
 end

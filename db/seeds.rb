@@ -25,10 +25,13 @@ User.create!(name: "Rei Suzuki",
                activated_at: Time.zone.now)
 end
 
+#randomly creates posts by users on their own walls
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  users.each { |user| user.microposts.create!(content: content, friend_id: user.id) }
 end
 
+#randomly assigns weights to users
 users.each { |user| Weight.create(weight: 100+Random.rand(100), user_id: user.id)}
+

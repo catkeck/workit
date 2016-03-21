@@ -3,6 +3,9 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Add a comment" %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :friend_id, :value => @user.id %>
+  </div>
   <%= f.submit "Post", class: "btn btn-primary" %>  
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
