@@ -6,13 +6,17 @@
           <h1>
             <%= gravatar_for @user, size: 50 %>
             <%= @user.name %>
+            </br>
+            </br>
+            </br>
+            </br>
           </h1>
-        </section>
         <% for friend in @user.friends %>
            <li><%= gravatar_for friend, size: 20 %>
            <%= link_to friend.name, user_path(friend) %></li>
            </br>
         <% end %>
+       </section>
       </aside>
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
