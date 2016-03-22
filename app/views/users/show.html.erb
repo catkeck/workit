@@ -24,7 +24,7 @@
           <h3> You are at <%= @weight.weight %> pounds! </h3>
            <%= render 'shared/update_weight' %>
         <% else %>
-          <h3> <%= @user%>'s current weight </h3>
+          <h3> <%= @user.name%>'s is currently at <%=@user.weight </h3>
         <% end %>
       <% if @user.microposts.any? %>
         <h3>Comments </h3>
