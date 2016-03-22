@@ -21,10 +21,11 @@
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
         <% if current_user == @user %>
-          <h3> You are at <%= @weight.weight %> pounds! </h3>
+          <h3> You are at <%= @weight.weight %> pounds. </h3>
+          <h3> Want to update your weight? </h3>
            <%= render 'shared/update_weight' %>
         <% else %>
-          <h3> <%= @user.name%>'s is currently at <%=@user.weight </h3>
+          <h3> <%= @user.name%>'s is currently at <%=@user.weight %></h3>
         <% end %>
       <% if @user.microposts.any? %>
         <h3>Comments </h3>
