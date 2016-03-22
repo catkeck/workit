@@ -20,15 +20,9 @@
       </aside>
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
-      <% if @weight.present? %>
-        <% if @user == current_user %>
           <h3>Your current weight </h3>
           You are at <%= @weight.weight %> pounds!
           <%= render 'shared/update_weight' %>
-        <% else %>
-         <%= @user.name%> is at <%= @weight.weight %> pounds!
-        <% end %>
-      <% end %> 
       <% if @user.microposts.any? %>
         <h3>Comments </h3>
         <section class = "micropost form">
