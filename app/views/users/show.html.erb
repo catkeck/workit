@@ -18,7 +18,7 @@
       <%= render 'add_friend_form' if logged_in? %>
       <% if @weight.present? %>
         <% if @user == current_user %>
-          <h3>Your weight </h3>
+          <h3>Your current weight </h3>
           You are at <%= @weight.weight %> pounds!
           <%= render 'shared/update_weight' %>
         <% else %>
@@ -36,4 +36,3 @@
         <%= will_paginate @microposts %>
       <% end %>
     </div>
-  </div>

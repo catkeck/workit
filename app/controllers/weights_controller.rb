@@ -14,8 +14,10 @@ class WeightsController < ApplicationController
     if @weight.update_attributes(weight_params)
       flash[:success] = "Weight updated"
       redirect_to current_user
+    else
+      flash[:notice] = "Can not update weight"
+      redirect_to current_user
     end
-    redirect_to current_user
   end
 
   def edit
@@ -39,7 +41,7 @@ class WeightsController < ApplicationController
   private
 
     def weight_params
-      params.require(weight)
+      params.require(:weight).permit(:weight, :date, :user_id)
     end
 
     def correct_user

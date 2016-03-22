@@ -1,7 +1,10 @@
-<%= form_for(@weight) do |f| %>
+<%= form_for(@weight, html: {multipart: true}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_area :weight, placeholder: "Enter weight" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :date, :value => Time.now %>
   </div>
   <%= f.submit "Add weight", class: "btn" %>  
 <% end %>

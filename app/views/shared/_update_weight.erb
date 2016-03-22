@@ -3,5 +3,8 @@
   <div class="field">
     <%= f.text_area :weight, placeholder: "Add weight" %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :date, :value => Time.now %>
+  </div>
   <%= f.submit "Update Weight", class: "btn btn-primary" %>  
 <% end %>
