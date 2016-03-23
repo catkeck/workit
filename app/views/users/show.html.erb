@@ -20,9 +20,9 @@
       </aside>
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
-        <% if current_user == @user && !@weight.blank?%>
+        <% if current_user == @user && @weight.blank?%>
           <h3> You are at <%= @weight.weight %> pounds. </h3>
-          <h3> Want to update your weight? </h3>
+          <h3> Want to add your weight? </h3>
           <%= render 'shared/add_weight' %>
         <%elsif current_user == @user %>
           <h3> Want to update your weight? </h3>
