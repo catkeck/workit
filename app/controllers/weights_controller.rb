@@ -4,7 +4,7 @@ class WeightsController < ApplicationController
   def new
     @weight = Weight.new
   end
-  
+
   def create
     @weight = current_user.weights.build(weight_params)
     if @current_weight.save
@@ -14,7 +14,7 @@ class WeightsController < ApplicationController
   end
 
   def update
-    @weight = Weight.find(params[:id])
+    @weight = Weight.new(weight_params)
     if @weight.update_attributes(weight_params)
       flash[:success] = "Weight updated"
       redirect_to current_user
