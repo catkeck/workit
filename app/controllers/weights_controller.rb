@@ -1,6 +1,10 @@
 class WeightsController < ApplicationController
   before_action :correct_user, only: [:create, :update]
 
+  def new
+    @weight = Weight.new
+  end
+  
   def create
     @weight = current_user.weights.build(weight_params)
     if @current_weight.save
