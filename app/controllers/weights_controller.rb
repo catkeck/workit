@@ -5,6 +5,7 @@ class WeightsController < ApplicationController
   def new
     @weight = Weight.new
   end
+  
   def create
     @weight = current_user.weights.build(weight_params)
     if @weight.save

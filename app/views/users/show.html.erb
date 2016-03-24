@@ -22,11 +22,11 @@
       <%= render 'add_friend_form' if logged_in? %>
         <% if current_user == @user && @weight.blank?%>
           <h3> Want to add your weight? </h3>
-          <%= render 'shared/add_weight' %>
+          <%= render 'shared/add_weight_form' %>
         <%elsif current_user == @user %>
           <h3> You are at <%= @weight.weight %> pounds. </h3>
           <h3> Want to update your weight? </h3>
-           <%= render 'shared/update_weight' %>
+           <%= render 'shared/update_weight_form' %>
         <% else %>
           <h3> <%= @user.name%>'s is currently at <%=@weight.weight %></h3>
         <% end %>
