@@ -1,4 +1,4 @@
-<%= form_for @weight do |f| %>
+<%= form_for (Weight.new) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.label :weight, placeholder: "Enter weight" %>
