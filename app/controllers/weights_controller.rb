@@ -9,12 +9,14 @@ class WeightsController < ApplicationController
     @weight = current_user.weights.build(weight_params)
     if @current_weight.save
       flash[:success] = "Weight added!"
-    end 
-    redirect_to current_user
+      redirect_to current_user
+    else
+      flash[:notice] = "Can not add weight"
+      redirect_to current_user
+    end
   end
 
   def update
-    @weight = Weight.new
     if @weight.update_attributes(weight_params)
       flash[:success] = "Weight updated"
       redirect_to current_user
