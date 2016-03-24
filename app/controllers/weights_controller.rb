@@ -17,7 +17,7 @@ class WeightsController < ApplicationController
   end
 
   def update
-    @Weight = Weight.order("created_at").last
+    @weight = Weight.order("created_at").last
     if @weight.update_attributes(weight_params)
       flash[:success] = "Weight updated"
       redirect_to current_user
