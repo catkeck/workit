@@ -7,7 +7,7 @@ class WeightsController < ApplicationController
 
   def create
     @weight = current_user.weights.build(weight_params)
-    if @current_weight.save
+    if @weight.save
       flash[:success] = "Weight added!"
       redirect_to current_user
     else
