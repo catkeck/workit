@@ -1,7 +1,7 @@
 <%= form_for @weight do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.number_area :weight, placeholder: "Add weight" %>
+    <%= f.label :weight, placeholder: "Add weight" %>
   </div>
   <div class="field">
     <%= f.hidden_field :date, :value => Time.now %>
