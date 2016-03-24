@@ -1,7 +1,7 @@
-<%= form_for(@weight) do |f| %>
+<%= form_for @weight, url: {action: "edit"} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :weight, placeholder: "Add weight" %>
+    <%= f.number_area :weight, placeholder: "Add weight" %>
   </div>
   <div class="field">
     <%= f.hidden_field :date, :value => Time.now %>
