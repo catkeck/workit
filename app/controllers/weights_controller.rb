@@ -14,7 +14,7 @@ class WeightsController < ApplicationController
   end
 
   def update
-    @weight = Weight.new(weight_params)
+    @weight = Weight.new
     if @weight.update_attributes(weight_params)
       flash[:success] = "Weight updated"
       redirect_to current_user
