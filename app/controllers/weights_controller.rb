@@ -1,5 +1,5 @@
 class WeightsController < ApplicationController
-  before_action :correct_user, only: [:create, :update, :destroy]
+  before_action :correct_user, only: [:destroy]
 
   def new
     @weight = Weight.new
