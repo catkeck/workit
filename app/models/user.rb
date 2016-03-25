@@ -88,14 +88,14 @@ class User < ActiveRecord::Base
     friendships.create(friend_id: other_user.id)
   end
 
-  #unfriends someone
-  def unfriend(other_user)
-    friendships.find_by(friend_id: other_user.id).destroy
-  end
-
   #checks if other person is friends with current user
   def friended?(other_user)
     friends.include?(other_user)
+  end
+
+  #allows searching for specific users
+  def self.search(search)
+    where("name LIKE?", "%#{search}%")
   end
 
   private

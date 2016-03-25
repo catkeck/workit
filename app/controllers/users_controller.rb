@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   
   def index
     @users = User.where(activated: true).paginate(page: params[:page]).order("name")
+    if params[:search]
+      @users = User.where(activated: true).search(params[:search]).order("name").paginate(page: params[:page]).order("name")
+    else
+      @users = User.where(activated: true).paginate(page: params[:page]).order("name")
+    end
   end
 
   def friends

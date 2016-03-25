@@ -1,11 +1,23 @@
 <div class = "description">
+
+  <%= form_for(users_path, :method => "get", id: "search-form") do %>
+    <div class="field">
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    </div>
+    <%= submit_tag 'Search', class: "btn" %>
+  <% end %>
+
   <% provide(:title, 'All users') %>
   <h1> Fellow users </h1>
 
   <%= will_paginate %>
 
   <ul class="users">
-  <%= render @users.sort_by { |user| user.name.downcase } %>
+  <%if @users.present? %>
+    <%= render @users.sort_by { |user| user.name.downcase } %>
+  <% else %>
+    <h2> There are no users fitting that description </h2>
+  <% end %>
   </ul>
 
   <%= will_paginate %>

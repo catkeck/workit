@@ -30,10 +30,29 @@ $gray-medium-light: #eaeaea;
 
 /* friends list */
 
-.friends {
+.friend {
   li {
     list-style-type: none;
   }
+}
+
+.friend_list {
+  margin-top: 10px;
+  li {
+    list-style-type: none;
+    a:link, a:visited, a:active {
+      color: black;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #777;
+      text-decoration: none;
+   }
+  }
+}
+
+.gap {
+  margin-top: 50px;
 }
 
 /* header */
@@ -53,9 +72,14 @@ $gray-medium-light: #eaeaea;
   }
 }
 
+/* footer */
+footer {
+  width: 100%;
+}
+
 /* cover page */
 #cover_page_image img{
-  width: 100%
+  width: 100%;
 }
 
 section {
