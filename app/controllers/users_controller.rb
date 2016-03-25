@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @users = User.where(activated: true).paginate(page: params[:page]).order("name")
   end
 
+  def friends
+    @users = current_user.friends.paginate(page: params[:page]).order("name")
+  end
+  
   def show
     @user = User.find(params[:id])
     @micropost = current_user.microposts.build if logged_in?

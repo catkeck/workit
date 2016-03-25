@@ -1,0 +1,17 @@
+<div class = "description">
+  <% provide(:title, 'Your Friends') %>
+
+  <% if @users.nil? || @users.empty? %>
+    <h2> You haven't added any friends yet! Go to the <%= link_to "Users", users_path %> page and add some new friends. </h2>
+  <% else %>
+    <h1> Your Friends </h1>
+
+    <%= will_paginate %>
+
+    <ul class="users">
+    <%= render @users.sort_by { |user| user.name.downcase } %>
+    </ul>
+
+    <%= will_paginate %>
+  <% end %>
+</div>

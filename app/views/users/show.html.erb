@@ -20,21 +20,23 @@
       </aside>
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
-        <% if current_user == @user && @weight.blank?%>
-          <h3> Want to add your weight? </h3>
-          <%= render 'shared/add_weight_form' %>
-        <%elsif current_user == @user %>
-          <h3> You are at <%= @weight.weight %> pounds. </h3>
-          <h3> Want to update your weight? </h3>
-           <%= render 'shared/update_weight_form' %>
-        <% else %>
-          <h3> <%= @user.name%>'s is currently at <%=@weight.weight %></h3>
-        <% end %>
+      <% if current_user == @user && @weight.blank?%>
+        <h3> Want to add your weight? </h3>
+        <%= render 'shared/add_weight_form' %>
+      <%elsif current_user == @user %>
+        <h3> You are at <%= @weight.weight %> pounds. </h3>
+        <h3> Want to update your weight? </h3>
+         <%= render 'shared/update_weight_form' %>
+      <% elsif @weight.nil?%>
+        <h3> <%=@user.name%> has not yet added a weight. </h3>
+      <% else %>
+        <h3> <%= @user.name%>'s is currently at <%=@weight.weight %></h3>
+      <% end %>
+      <h3>Comments </h3>
+      <section class = "micropost form">
+      <%= render 'shared/micropost_form'%>
+      </section>
       <% if @user.microposts.any? %>
-        <h3>Comments </h3>
-        <section class = "micropost form">
-        <%= render 'shared/micropost_form'%>
-        </section>
         <ol class="microposts">
         <%= render @microposts %>
         </ol>
