@@ -35,3 +35,4 @@ end
 #randomly assigns weights to users
 users.each { |user| Weight.create(weight: 100+Random.rand(100), user_id: user.id)}
 
+ 

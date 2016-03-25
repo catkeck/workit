@@ -5,7 +5,7 @@
   <%= will_paginate %>
 
   <ul class="users">
-  <%= render @users %>
+  <%= render @users.sort_by { |user| user.name.downcase } %>
   </ul>
 
   <%= will_paginate %>
