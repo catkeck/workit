@@ -7,9 +7,34 @@ class UsersControllerTest < ActionController::TestCase
     @other_user = users(:rei)
   end
 
+#These tests are all testing that the correct pages are getting accessed here
   test "should get new" do
     get :new
     assert_response :success
+  end
+
+  test "should get show when logged in" do
+    log_in_as(@other_user)
+    get :show, id: @user
+    assert_response :success
+  end
+
+  test "should see friends page when logged in" do
+    log_in_as(@other_user)
+    get :friends
+    assert_response :success
+  end
+
+  test "should see index page when logged in" do
+    log_in_as(@user)
+    get :index
+    assert_response :success
+  end
+
+#These tests are all testing that pages are redirected properly when not logged in
+  test "should redirect show when not logged in" do
+    get :show, id: @user
+    assert_redirected_to login_url
   end
 
   test "should redirect edit when not logged in" do
@@ -49,4 +74,20 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_url
   end
+
+#This test is meant to check that a user is correctly created
+  test "number of users goes up by one when user is created" do
+    num = User.count
+    vesh = User.new(name: "Vesha", email: "veshatest@gmail.com", activated: true)
+    assert num += 1
+  end
+
+#This test is meant to check that a user was correctly destroyed
+  test "number of users goes down by one when user is destroyed" do
+    vesh = User.new(name: "Vesha", email: "veshatest@gmail.com", activated: true)
+    log_in_as(@user)
+    num = User.count
+    vesh.destroy
+    assert num -= 1
+  end 
 end

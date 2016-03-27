@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   
   def index
-    @users = User.where(activated: true).paginate(page: params[:page]).order("name")
-    if params[:search]
-      @users = User.where(activated: true).search(params[:search]).order("name").paginate(page: params[:page]).order("name")
-    else
+    if logged_in?
       @users = User.where(activated: true).paginate(page: params[:page]).order("name")
+      if params[:search]
+        @users = User.where(activated: true).search(params[:search]).order("name").paginate(page: params[:page]).order("name")
+      else
+        @users = User.where(activated: true).paginate(page: params[:page]).order("name")
+      end
+    else
+      redirect_to login_url
     end
   end
 
@@ -17,12 +21,16 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @micropost = current_user.microposts.build if logged_in?
-    @microposts = Micropost.where(friend_id: @user.id).paginate(page: params[:page])
-    redirect_to root_url and return unless @user.activated?
-    @weights = Weight.where(user_id: @user.id)
-    @weight = @weights.order("created_at").last
+    if logged_in?
+      @user = User.find(params[:id])
+      @micropost = current_user.microposts.build if logged_in?
+      @microposts = Micropost.where(friend_id: @user.id).paginate(page: params[:page])
+      redirect_to login_url and return unless @user.activated?
+      @weights = Weight.where(user_id: @user.id)
+      @weight = @weights.order("created_at").last
+    else
+      redirect_to login_url
+    end
   end
 
   def new
@@ -41,23 +49,31 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to login_url
+    end
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
+    if logged_in?
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params)
+        flash[:success] = "Profile updated"
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to login_url
     end
   end
 
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to users_url
+    redirect_to login_url
   end
 
   private
