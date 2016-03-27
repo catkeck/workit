@@ -86,11 +86,17 @@ class User < ActiveRecord::Base
   #adds a friend
   def add_friend(other_user)
     friendships.create(friend_id: other_user.id)
+    friendships.create(user_id: other_user.id, friend_id: self.id)
   end
 
   #checks if other person is friends with current user
   def friended?(other_user)
     friends.include?(other_user)
+  end
+
+  def unfriend(other_user)
+    @friendship = self.friendships.find_by(friend_id: other_user.id)
+    @friendship.destroy
   end
 
   #allows searching for specific users

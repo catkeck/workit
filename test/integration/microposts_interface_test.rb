@@ -13,16 +13,16 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 
     # Invalid submission
     assert_no_difference 'Micropost.count' do
-      post microposts_path, micropost: { content: "" }
+      post microposts_path, micropost: { content: "", friend_id: @user_visit.id}
     end
 
     # Valid submission
     content = "God I want a waffle"
     assert_difference 'Micropost.count', 1 do
-      post microposts_path, micropost: { content: content }
+      post microposts_path, micropost: { content: content, friend_id: @user_visit.id }
     end
 
-    assert_redirected_to user_path(users(:caitlin))
+    assert_redirected_to user_path(users(:rei))
     follow_redirect!
     # Delete a post.
     #assert_select "God I want a waffle", text: 'delete'
