@@ -75,19 +75,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
-#This test is meant to check that a user is correctly created
-  test "number of users goes up by one when user is created" do
-    num = User.count
-    vesh = User.new(name: "Vesha", email: "veshatest@gmail.com", activated: true)
-    assert num += 1
-  end
-
 #This test is meant to check that a user was correctly destroyed
   test "number of users goes down by one when user is destroyed" do
-    vesh = User.new(name: "Vesha", email: "veshatest@gmail.com", activated: true)
-    log_in_as(@user)
-    num = User.count
-    vesh.destroy
-    assert num -= 1
+    assert_difference 'User.count', -1 do
+      @user.destroy
+    end
   end 
 end

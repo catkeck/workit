@@ -37,7 +37,7 @@
       <section class = "micropost form">
       <%= render 'shared/micropost_form'%>
       </section>
-      <% if @user.microposts.any? %>
+      <% unless @microposts.nil? %>
         <ol class="microposts">
         <%= render @microposts %>
         </ol>
