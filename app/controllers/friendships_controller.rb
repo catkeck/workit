@@ -3,14 +3,18 @@ class FriendshipsController < ApplicationController
   def create
     if logged_in?
       @current_friend = User.find(params[:friend_id])
-      @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-      @friendship_2 = @current_friend.friendships.build(:friend_id => current_user.id)
-      if @friendship.save && @friendship_2.save
-        flash[:notice] = "Friend added"
-        redirect_to current_user
+      if current_user.friended?(@current_friend)
+        flash[:notice] = "Already friends. Sorry! You can not readd this friend."
       else
-        flash[:notice] = "Can not add friend"
-        redirect_to current_user
+        @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+        @friendship_2 = @current_friend.friendships.build(:friend_id => current_user.id)
+        if @friendship.save && @friendship_2.save
+          flash[:notice] = "Friend added"
+          redirect_to current_user
+        else
+          flash[:notice] = "Can not add friend"
+          redirect_to current_user
+        end
       end
     else
       redirect_to login_url

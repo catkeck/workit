@@ -1,4 +1,5 @@
 class WeightsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :update, :edit, :show]
   before_action :correct_user, only: [:destroy]
 
   def new
@@ -56,6 +57,14 @@ class WeightsController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
+    #confirms if user is logged in
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in"
+        redirect_to login_url
+      end
+    end
 end
 
 

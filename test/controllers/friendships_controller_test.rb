@@ -5,7 +5,6 @@ class FriendshipsControllerTest < ActionController::TestCase
   def setup
     @one = friendships(:one)
     @two = friendships(:two)
-    @user = users(:caitlin)
   end
 
   #this test checks for user being properly logged in
@@ -22,10 +21,9 @@ class FriendshipsControllerTest < ActionController::TestCase
     end
     assert_redirected_to login_url
   end
-
   
   test "destroying friendship should make friendship count go down" do
-    log_in_as(@user)
+    log_in_as(users(:caitlin))
     count_friends = Friendship.count
     assert_difference('Friendship.count', -1) do
       @one.destroy

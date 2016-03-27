@@ -1,2 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  user_id: 1
+  weight: 150
+  date: <%= Time.now %>
+
+two:
+  user_id: 2
+  weight: 100
+  date: <%= Time.now %>
+
