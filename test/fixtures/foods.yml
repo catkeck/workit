@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand_id: 1
+  brand_name: MyString
+  item_id: 1
+  item_name: MyString
+  nf_calories: 1.5
+  user_id: 1
+  date: 2016-03-27 20:48:16
+  servings: 1.5
+
+two:
+  brand_id: 1
+  brand_name: MyString
+  item_id: 1
+  item_name: MyString
+  nf_calories: 1.5
+  user_id: 1
+  date: 2016-03-27 20:48:16
+  servings: 1.5

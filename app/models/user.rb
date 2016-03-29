@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :weights
+  has_many :foods
   before_save :downcase_email
   before_create :create_activation_digest
 

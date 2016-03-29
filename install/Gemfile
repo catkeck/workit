@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
-
+# Aren't you suppose to have nutritionix i here
 # Specify your gem's dependencies in install.gemspec
 gemspec

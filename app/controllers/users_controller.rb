@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       redirect_to login_url and return unless @user.activated?
       @weights = Weight.where(user_id: @user.id)
       @weight = @weights.order("created_at").last
+      @foods = Food.where(user_id: @user.id)
     else
       redirect_to login_url
     end

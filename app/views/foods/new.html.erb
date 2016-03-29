@@ -1,0 +1,65 @@
+<div class = "description">
+  <%= form_tag(new_food_path, method: :get) do %>
+    <%= text_field_tag :query, nil %>
+    <%= submit_tag "Search for food", class: "btn btn-primary"  %>
+  <% end %>
+
+  <% if @results %>
+    <% @results.each do |result| %>
+
+      <h3>Name: <%= result["fields"]["item_name"] %></h3>
+      <h4>Brand: <%= result["fields"]["brand_name"] %></h4>
+      <h4>Serving Size: <%= result["fields"]["nf_serving_size_qty"]%> <%=result["fields"]["nf_serving_size_unit"]%> </h4>
+      <h4><%= result["fields"]["nf_calories"]%> calories</h4>
+
+          <p>Ingredients: <%= result["fields"]["nf_ingredient_statement"] %></p>
+          <p>Calories from fat: <%= result["fields"]["nf_calories_from_fat"] %> </p>
+          <p>Total fat: <%= result["fields"]["nf_total_fat"] %></p>
+          <p>Saturated fat: <%= result["fields"]["nf_saturated_fat"] %></p>
+          <p>Cholesterol: <%= result["fields"]["nf_cholesterol"] %></p>
+          <p>Sodium: <%= result["fields"]["nf_sodium"] %></p>
+          <p>Carboydrates: <%= result["fields"]["nf_total_carbohydrate"] %></p>
+          <p>Dietary Fiber: <%= result["fields"]["nf_dietary_fiber"] %></p>
+          <p>Sugars: <%= result["fields"]["nf_sugars"]%></p>
+          <p>Protein: <%=result["fields"]["nf_protein"]%></p>
+          <p>Vitamin A: <%= result["fields"]["nf_vitamin_a_dv"]%></p>
+          <p>Vitamin C: <%= result["fields"]["nf_vitamin_c_dv"]%></p>
+          <p>Calcium: <%= result["fields"]["nf_calcium_dv"]%></p>
+          <p>Iron: <%= result["fields"]["nf_iron_dv"]%></p>
+          <p>Potassium: <%= result["fields"]["nf_potassium"]%></p>
+          <p>Description: <%= result["fields"]["description"] %></p>
+
+      <%= form_for @food do |f| %>
+        <%= f.hidden_field :item_name, value: result["fields"]["item_name"] %>
+        <%= f.hidden_field :calories, value: result["fields"]["nf_calories"] %>
+        <%= f.hidden_field :brand_name, value: result["fields"]["brand_name"] %>
+        <%= f.hidden_field :item_id, value: result["fields"]["item_id"] %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :date, value: Time.now.strftime("%m/%d/%Y") %>
+        <%= f.hidden_field :description, value: result["fields"]["item_description"]%>
+        <%= f.hidden_field :ingredients, value: result["fields"]["nf_ingredient_statement"]%>
+        <%= f.hidden_field :calories, value: result["fields"]["nf_calories"]%>
+        <%= f.hidden_field :calories_from_fat, value: result["fields"]["nf_calories_from_fat"] %>
+        <%= f.hidden_field :total_fat, value: result["fields"]["nf_total_fat"] %>
+        <%= f.hidden_field :saturated_fat, value: result["fields"]["nf_saturated_fat"] %>
+        <%= f.hidden_field :cholesterol, value: result["fields"]["nf_cholesterol"] %>
+        <%= f.hidden_field :sodium, value: result["fields"]["nf_sodium"] %>
+        <%= f.hidden_field :carbohydrates, value: result["fields"]["nf_total_carbohydrate"] %>
+        <%= f.hidden_field :dietary_fiber, value: result["fields"]["nf_dietary_fiber"] %>
+        <%= f.hidden_field :sugars, value: result["fields"]["nf_sugars"]%>
+        <%= f.hidden_field :protein, value: result["fields"]["nf_protein"]%>
+        <%= f.hidden_field :vitamin_a, value: result["fields"]["nf_vitamin_a_dv"]%>
+        <%= f.hidden_field :vitamin_c, value: result["fields"]["nf_vitamin_c_dv"]%>
+        <%= f.hidden_field :calcium, value: result["fields"]["nf_calcium_dv"]%>
+        <%= f.hidden_field :iron, value: result["fields"]["nf_iron_dv"]%>
+        <%= f.hidden_field :potassium, value: result["fields"]["nf_potassium"]%>
+        <%= f.hidden_field :serving_size, value: result["fields"]["nf_serving_size_qty"]%>
+        <%= f.hidden_field :serving_unit, value: result["fields"]["nf_serving_size_unit"]%>   
+        <div class="field">
+          <%= f.number_field :servings, placeholder: "Please enter the amount of servings you had" %>
+        </div>
+        <%= f.submit "Create Food", class: "btn btn-primary"  %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
