@@ -21,10 +21,10 @@ class FoodsController < ApplicationController
     @food.save
     if @food.save
       flash[:info] = "Congratulations! You have added this to your daily logged food"
-      render :new
+      redirect_to user_path(current_user)
     else
       flash[:info] = "Sorry, but an error has taken place. This has not been added to your daily logged food. Please try with a different food!"
-      redirect_to root_url
+      redirect_to user_path(current_user)
     end
   end
 

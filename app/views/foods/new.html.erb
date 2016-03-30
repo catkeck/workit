@@ -1,4 +1,5 @@
-<div class = "description">
+
+<div class="description">
   <%= form_tag(new_food_path, method: :get) do %>
     <%= text_field_tag :query, nil %>
     <%= submit_tag "Search for food", class: "btn btn-primary"  %>
@@ -6,36 +7,36 @@
 
   <% if @results %>
     <% @results.each do |result| %>
-
-      <h3>Name: <%= result["fields"]["item_name"] %></h3>
-      <h4>Brand: <%= result["fields"]["brand_name"] %></h4>
-      <h4>Serving Size: <%= result["fields"]["nf_serving_size_qty"]%> <%=result["fields"]["nf_serving_size_unit"]%> </h4>
-      <h4><%= result["fields"]["nf_calories"]%> calories</h4>
-
-          <p>Ingredients: <%= result["fields"]["nf_ingredient_statement"] %></p>
-          <p>Calories from fat: <%= result["fields"]["nf_calories_from_fat"] %> </p>
-          <p>Total fat: <%= result["fields"]["nf_total_fat"] %></p>
-          <p>Saturated fat: <%= result["fields"]["nf_saturated_fat"] %></p>
-          <p>Cholesterol: <%= result["fields"]["nf_cholesterol"] %></p>
-          <p>Sodium: <%= result["fields"]["nf_sodium"] %></p>
-          <p>Carboydrates: <%= result["fields"]["nf_total_carbohydrate"] %></p>
-          <p>Dietary Fiber: <%= result["fields"]["nf_dietary_fiber"] %></p>
-          <p>Sugars: <%= result["fields"]["nf_sugars"]%></p>
-          <p>Protein: <%=result["fields"]["nf_protein"]%></p>
-          <p>Vitamin A: <%= result["fields"]["nf_vitamin_a_dv"]%></p>
-          <p>Vitamin C: <%= result["fields"]["nf_vitamin_c_dv"]%></p>
-          <p>Calcium: <%= result["fields"]["nf_calcium_dv"]%></p>
-          <p>Iron: <%= result["fields"]["nf_iron_dv"]%></p>
-          <p>Potassium: <%= result["fields"]["nf_potassium"]%></p>
-          <p>Description: <%= result["fields"]["description"] %></p>
-
+    <div class="table-responsive">
+      <table class="table">
+        <tr><th>Name</th><td><%= result["fields"]["item_name"]%></td></tr>
+        <tr><th>Brand</th><td><%= result["fields"]["brand_name"] %></td></tr>
+        <tr><th>Serving Size</th><td><%= result["fields"]["nf_serving_size_qty"]%> <%=result["fields"]["nf_serving_size_unit"]%></td></tr>
+        <tr><th>Ingredients</th><td><%= result["fields"]["nf_ingredient_statement"] %></td></tr>
+        <tr><th>Calories</th><td><%= result["fields"]["nf_calories"]%></td></tr>
+        <tr><th>Calories from fat</th><td><%= result["fields"]["nf_calories_from_fat"] %></td></tr>
+        <tr><th>Total Fat</th><td><%= result["fields"]["nf_total_fat"] %></td></tr>
+        <tr><th>Saturated Fat</th><td><%= result["fields"]["nf_saturated_fat"] %></td></tr>
+        <tr><th>Cholesterol</th><td><%= result["fields"]["nf_cholesterol"] %></td></tr>
+        <tr><th>Sodium</th><td><%= result["fields"]["nf_sodium"] %></td></tr>
+        <tr><th>Carbohydrates</th><td><%= result["fields"]["nf_total_carbohydrate"] %></td></tr>
+        <tr><th>Dietary Fiber</th><td><%= result["fields"]["nf_dietary_fiber"] %></td></tr>
+        <tr><th>Sugars</th><td><%= result["fields"]["nf_sugars"]%></td></tr>
+        <tr><th>Protein</th><td><%= result["fields"]["nf_protein"]%></td></tr>
+        <tr><th>Vitamin A</th><td><%= result["fields"]["nf_vitamin_a_dv"]%></td></tr>
+        <tr><th>Vitamin C</th><td><%= result["fields"]["nf_vitamin_c_dv"]%></td></tr>
+        <tr><th>Calcium</th><td><%= result["fields"]["nf_calcium_dv"]%></td></tr>
+        <tr><th>Iron</th><td><%= result["fields"]["nf_iron_dv"]%></td></tr>
+        <tr><th>Potassium</th><td><%= result["fields"]["nf_potassium"]%></td></tr>
+       </table>
+      </div>
       <%= form_for @food do |f| %>
         <%= f.hidden_field :item_name, value: result["fields"]["item_name"] %>
         <%= f.hidden_field :calories, value: result["fields"]["nf_calories"] %>
         <%= f.hidden_field :brand_name, value: result["fields"]["brand_name"] %>
         <%= f.hidden_field :item_id, value: result["fields"]["item_id"] %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :date, value: Time.now.strftime("%m/%d/%Y") %>
+        <%= f.hidden_field :date, value: Date.current.to_s %>
         <%= f.hidden_field :description, value: result["fields"]["item_description"]%>
         <%= f.hidden_field :ingredients, value: result["fields"]["nf_ingredient_statement"]%>
         <%= f.hidden_field :calories, value: result["fields"]["nf_calories"]%>
@@ -55,11 +56,10 @@
         <%= f.hidden_field :potassium, value: result["fields"]["nf_potassium"]%>
         <%= f.hidden_field :serving_size, value: result["fields"]["nf_serving_size_qty"]%>
         <%= f.hidden_field :serving_unit, value: result["fields"]["nf_serving_size_unit"]%>   
-        <div class="field">
-          <%= f.number_field :servings, placeholder: "Please enter the amount of servings you had" %>
-        </div>
-        <%= f.submit "Create Food", class: "btn btn-primary"  %>
-      <% end %>
+        <%= f.number_field :servings, placeholder: "Please enter the amount of servings you had" %>
+        <%= f.submit "Add to Today's Food", class: "btn btn-primary" %>
+      <%end%>
     <% end %>
-  <% end %>
+  <%end%>
 </div>
+

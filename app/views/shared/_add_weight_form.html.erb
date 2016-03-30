@@ -4,7 +4,7 @@
     <%= f.text_field :weight, placeholder: "Enter weight" %>
   </div>
   <div class="field">
-    <%= f.hidden_field :date, :value => Time.now %>
+    <%= f.hidden_field :date, :value => Date.current.to_s %>
   </div>
   <%= f.submit "Add weight", class: "btn" %>  
 <% end %>

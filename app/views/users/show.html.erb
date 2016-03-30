@@ -21,13 +21,15 @@
       </aside>
     <div class="col-md-8">
       <%= render 'add_friend_form' if logged_in? %>
-      <% if current_user == @user && @weight.blank?%>
-        <h3> Want to add your weight? </h3>
-        <%= render 'shared/add_weight_form' %>
-      <%elsif current_user == @user %>
-        <h3> You are at <%= @weight.weight %> pounds. </h3>
-        <h3> Want to update your weight? </h3>
-         <%= render 'shared/update_weight_form' %>
+      <% if current_user == @user %>
+        <% if @weight.blank?%>
+        <h3> You have not entered a weight in yet. You should enter it below to start tracking! </h3>
+          <%= render 'shared/add_weight_form' %>
+        <%else%>
+         <h3> You are at <%= @weight.weight %> pounds. </h3>
+         <h3> Want to update your weight? </h3>
+          <%= render 'shared/add_weight_form' %>
+        <% end %>
       <% elsif @weight.nil?%>
         <h3> <%=@user.name%> has not yet added a weight. </h3>
       <% else %>
@@ -35,11 +37,25 @@
       <% end %>
       
       <h3> Foods </h3>
-      <% @foods.each do |food| %>
-        <%= food.item_name %> <br/>
-        <%= food.calories %> <br/>
-        <%= food.date %> <br/>
-      <% end%>
+      <div class="table-responsive">
+        <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Calories</th>
+          <th>Serving Size</th>
+          <th>Number of Servings</th>
+        </tr>
+        <% @foods.each do |food| %>
+          <tr>
+            <td><%= food.item_name %></td>
+            <td><%= food.calories %></td>
+            <td><%= food.serving_size%> <%=food.serving_unit %></td>
+            <td><%= food.servings%></td>
+          </tr>
+        <% end%>
+        </table>
+        <%= link_to "Add Food", new_food_path, class: "btn btn-primary" %>
+      </div>
 
       <h3>Comments </h3>
       <section class = "micropost form">
