@@ -29,6 +29,7 @@ class UsersController < ApplicationController
       @weights = Weight.where(user_id: @user.id)
       @weight = @weights.order("created_at").last
       @foods = Food.where(user_id: @user.id).where(date: Date.current.to_s)
+      @total_calories = @foods.inject(0){|total,food| total + food.servings*food.calories}
     else
       redirect_to login_url
     end
