@@ -24,7 +24,6 @@
     <div class="col-md-8">
        <!-- Displays add friend form/delete friend form -->
       <%= render 'add_friend_form' if logged_in? %>
-      
       <!-- Figures out what to display for weight for users -->
       <% if current_user == @user %>
         <% if @weight.blank?%>
@@ -46,32 +45,36 @@
         <svg id ="visualization" width="800" height="500"></svg>
       <% end %>
 
-      <!-- Displays all foods that have been consumed -->
-      <h3> Foods </h3>
-      <div class="table-responsive">
-        <table class="table">
-        <tr>
-          <th>Name</th>
-          <th>Calories</th>
-          <th>Serving Size</th>
-          <th>Number of Servings</th>
-        </tr>
-        <% @foods.each do |food| %>
-          <tr>
-            <td><%= food.item_name %></td>
-            <td><%= food.calories %></td>
-            <td><%= food.serving_size%> <%=food.serving_unit %></td>
-            <td><%= food.servings%></td>
-          </tr>
-        <% end%>
+      <% if current_user == @user %>
+        <!-- Displays all foods that have been consumed -->
+        <h3> Foods </h3>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Calories</th>
+              <th>Serving Size</th>
+              <th>Number of Servings</th>
+            </tr>
+            <% @foods.each do |food| %>
+              <tr>
+                <td><%= food.item_name %></td>
+                <td><%= food.calories %></td>
+                <td><%= food.serving_size%> <%=food.serving_unit %></td>
+                <td><%= food.servings%></td>
+              </tr>
+            <% end%>
+          </table>
+        <!-- Displays all of the calories that were consumed -->
+         
+          
 
-      <!-- Displays all of the calories that were consumed -->
-        You have consumed <%= @total_calories %> calories today!
-        </table>
-        <%= link_to "Add Food", new_food_path, class: "btn btn-primary" %>
+           You have consumed <%= @total_calories %> calories today! </br>
+          <%= link_to "Add Food", new_food_path, class: "btn btn-primary" %>
+        
+        </div>
+      <% end %>
       
-      </div>
-
       <!-- Displays comments section -->
       <h3>Comments </h3>
       <section class = "micropost form">
