@@ -33,10 +33,12 @@ class UsersController < ApplicationController
       @total_calories = @foods.inject(0){|total,food| total + food.servings*food.calories}
 
       #This hash is for use in the JS D3.js graph of weights
-      @graph_weight_date = Array.new
-      @weights.each do |weight|
-        @graph_weight_date << { :date => weight.date * 1000, :weight => weight.weight}
+      @graph_weight_date = @weights.map do |weight|
+        { :date => weight.date * 1000, :weight => weight.weight}
       end
+
+      puts "shroomy"
+      puts @graph_weight_date
 
       gon.data = @graph_weight_date
     else

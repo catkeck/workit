@@ -1,6 +1,8 @@
-$(document).on('ready', function() {
+$(document).on('page:load', function() {
   var lineData = gon.data
-
+  console.log(<%= @graph_weight_date.to_json %>)
+  console.log(gon.data)
+  console.log(gon)
   var vis = d3.select("#visualization"),
       WIDTH = 800,
       HEIGHT = 500,
