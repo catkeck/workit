@@ -1,4 +1,6 @@
 <% provide(:title, @user.name) %>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- These are loaded async, idk if they are ready to use? -->
   <div class = "friend_page">
     <div class="row">
       <aside class = "col-md-4">
@@ -20,7 +22,10 @@
         </section>
       </aside>
     <div class="col-md-8">
+       <!-- Displays add friend form/delete friend form -->
       <%= render 'add_friend_form' if logged_in? %>
+      
+      <!-- Figures out what to display for weight for users -->
       <% if current_user == @user %>
         <% if @weight.blank?%>
         <h3> You have not entered a weight in yet. You should enter it below to start tracking! </h3>
@@ -35,7 +40,13 @@
       <% else %>
         <h3> <%= @user.name%>'s is currently at <%=@weight.weight %></h3>
       <% end %>
-      
+
+      <!-- Requires more than one weight to display a graph --> 
+      <% if @user.weights.count > 1 %>
+        <svg id ="visualization" width="800" height="500"></svg>
+      <% end %>
+
+      <!-- Displays all foods that have been consumed -->
       <h3> Foods </h3>
       <div class="table-responsive">
         <table class="table">
@@ -53,11 +64,15 @@
             <td><%= food.servings%></td>
           </tr>
         <% end%>
+
+      <!-- Displays all of the calories that were consumed -->
         You have consumed <%= @total_calories %> calories today!
         </table>
         <%= link_to "Add Food", new_food_path, class: "btn btn-primary" %>
+      
       </div>
 
+      <!-- Displays comments section -->
       <h3>Comments </h3>
       <section class = "micropost form">
       <%= render 'shared/micropost_form'%>

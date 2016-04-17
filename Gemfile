@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
 
 gem 'rails',                    '4.2.2'
 gem 'bcrypt',                   '3.1.7'
@@ -19,9 +18,11 @@ gem 'turbolinks'
 gem 'jbuilder',                 '~> 2.0'
 gem 'sdoc',                     '~> 0.4.0', group: :doc
 gem 'chartkick'
-gem 'httparty'
 gem 'nutritionix'
 gem 'figaro'
+gem 'lazy_high_charts'
+gem 'whenever', require: false
+gem 'gon'
 
 group :development do
   gem 'sqlite3',                '1.3.9'

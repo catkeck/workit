@@ -3,4 +3,6 @@ class Weight < ActiveRecord::Base
   validates :user_id,  presence: true, numericality: true
   validates :weight, presence: true, numericality: true
   validates :date, presence: true
+
+
 end

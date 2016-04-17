@@ -32,7 +32,9 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content, friend_id: user.id) }
 end
 
-#randomly assigns weights to users
-users.each { |user| Weight.create(weight: 100+Random.rand(100), user_id: user.id)}
+Weight.create(weight: 100+Random.rand(100), user_id: 1, date: (Time.now - 3*86400).to_i)
+Weight.create(weight: 100+Random.rand(100), user_id: 1, date: (Time.now - 2*86400).to_i)
+Weight.create(weight: 100+Random.rand(100), user_id: 1, date: (Time.now - 86400).to_i)
 
- 
+
+

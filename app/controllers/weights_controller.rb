@@ -7,7 +7,8 @@ class WeightsController < ApplicationController
   end
 
   def create
-    @weight = current_user.weights.build(weight_params)
+    @weight = current_user.weights.build(weight_params) 
+    Weight.where(date: Time.zone.now.beginning_of_day.to_i..Time.zone.now.end_of_day.to_i).where(user_id: current_user.id).destroy_all 
     if @weight.save
       flash[:success] = "Weight added!"
       redirect_to current_user
@@ -32,20 +33,14 @@ class WeightsController < ApplicationController
     @weight = Weight.find(params[:id])
   end
 
-  def roll
-    Users.each { |user|
-      @weights = Weight.where(user_id: user)
-      @weight = @weights.order("created_at").last
-      if @weight.present?
-        Weight.new(weight: @weight.weight, date: Date.yesterday, user_id: user.id)
-      end
-    }
-  end
-
   def show
     @weight = current_user.weights.order("created_at").last
   end
 
+  def destroy
+    Weight.find(params[:id]).destroy
+  end
+  
   private
 
     def weight_params

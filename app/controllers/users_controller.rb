@@ -23,16 +23,29 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = User.find(params[:id])
-      @micropost = current_user.microposts.build if logged_in?
+      @micropost = current_user.microposts.build
       @microposts = Micropost.where(friend_id: @user.id).paginate(page: params[:page])
-      redirect_to login_url and return unless @user.activated?
+      
       @weights = Weight.where(user_id: @user.id)
-      @weight = @weights.order("created_at").last
-      @foods = Food.where(user_id: @user.id).where(date: Date.current.to_s)
+      @weight = @weights.order("date").max
+      
+      @foods = Food.where(user_id: @user.id).where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
       @total_calories = @foods.inject(0){|total,food| total + food.servings*food.calories}
+
+      #This hash is for use in the JS D3.js graph of weights
+      @graph_weight_date = Array.new
+      @weights.each do |weight|
+        @graph_weight_date << { :date => weight.date * 1000, :weight => weight.weight}
+      end
+
+      gon.data = @graph_weight_date
     else
       redirect_to login_url
     end
+  end
+
+  def data
+    
   end
 
   def new

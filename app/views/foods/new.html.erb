@@ -36,7 +36,7 @@
         <%= f.hidden_field :brand_name, value: result["fields"]["brand_name"] %>
         <%= f.hidden_field :item_id, value: result["fields"]["item_id"] %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :date, value: Date.current.to_s %>
+        <%= f.hidden_field :date, value: Time.now.to_i%>
         <%= f.hidden_field :description, value: result["fields"]["item_description"]%>
         <%= f.hidden_field :ingredients, value: result["fields"]["nf_ingredient_statement"]%>
         <%= f.hidden_field :calories, value: result["fields"]["nf_calories"]%>
