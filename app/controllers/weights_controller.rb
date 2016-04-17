@@ -10,7 +10,7 @@ class WeightsController < ApplicationController
     @weight = current_user.weights.build(weight_params) 
     beginning = Time.zone.now.beginning_of_day.to_i
     ending = Time.zone.now.end_of_day.to_i
-    Weight.where(date: beginning..ending).where(user_id: current_user.id).destroy_all 
+    Weight.where("date between ? and ?", beginning, ending).where(user_id: current_user.id).destroy_all 
     if @weight.save
       flash[:success] = "Weight added!"
       redirect_to current_user
