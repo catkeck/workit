@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<!-- These are loaded async, idk if they are ready to use? -->
+
   <div class = "friend_page">
     <div class="row">
       <aside class = "col-md-4">
@@ -24,8 +24,6 @@
       </aside>
     <div class="col-md-8">
        <!-- Displays add friend form/delete friend form -->
-        <%= include_gon %>
-       <%= @graph_weight_date %>
       <%= render 'add_friend_form' if logged_in? %>
       <!-- Figures out what to display for weight for users -->
       <% if current_user == @user %>
