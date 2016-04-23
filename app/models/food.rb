@@ -1,5 +1,8 @@
 class Food < ActiveRecord::Base
   belongs_to :user
+  validates :item_name, presence: true
+  validates :calories, presence: true
+  validates :serving_size, presence: true
   require "nutritionix/api_1_1"
 
   def provider
