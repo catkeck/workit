@@ -54,15 +54,13 @@
             <tr>
               <th>Name</th>
               <th>Calories</th>
-              <th>Serving Size</th>
-              <th>Number of Servings</th>
+              <th>Servings Eaten</th>
             </tr>
-            <% @foods.each do |food| %>
+            <% @foods.sort.each do |food| %>
               <tr>
                 <td><%= food.item_name %></td>
                 <td><%= food.calories %></td>
-                <td><%= food.serving_size%> <%=food.serving_unit %></td>
-                <td><%= food.servings%></td>
+                <td><%= food.servings %><%= food.serving_unit %></td>
               </tr>
             <% end%>
           </table>

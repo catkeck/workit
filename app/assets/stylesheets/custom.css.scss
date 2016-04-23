@@ -117,12 +117,6 @@ h2 {
 
 /* footer */
 
-/* footer */
-footer {
-  width: 100%;
-}
-
-
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -133,7 +127,7 @@ footer {
   left: 0;
   bottom: 0;
   height: 100px;
-  with: 100%;
+  width: 100%;
   background-color: #222;
   a {
     color: #555;
@@ -324,13 +318,6 @@ span.picture {
     border: 0;
   }
 }
-
-body { 
-  margin: 0 0 100px;
-}
-
-
-
 .wrapper {
   margin:0px, 0px;
 }
@@ -356,10 +343,8 @@ body {
   font-family: 'Proxima Nova regular',Arial,sans-serif;
   letter-spacing: .13em;
   font-size: 14px;
+  margin: 0 0 100px;
 }
-
-
-
 
 /* styles button */
 
@@ -384,9 +369,9 @@ body {
 
 /* formats images on home page */
 
-.col-sm-2{
+.images{
   img {
-   width: 100%;
+   width: 30%;
    padding: 1px;
   }
   p {
@@ -438,20 +423,20 @@ p {
 }
 
 path { 
-    stroke: steelblue;
-    stroke-width: 2;
-    fill: none;
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
 }
 
 .axis path {
-    fill: none;
-    stroke: #777;
-    shape-rendering: crispEdges;
+  fill: none;
+  stroke: #777;
+  shape-rendering: crispEdges;
 }
 
 .axis text {
-    font-family: Lato;
-    font-size: 13px;
+  font-family: Lato;
+  font-size: 13px;
 }
 
 html {
