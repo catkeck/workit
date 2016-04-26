@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    puts "wtf"
     if logged_in?
       @user = User.find(params[:id])
       @micropost = current_user.microposts.build
