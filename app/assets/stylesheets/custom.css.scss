@@ -328,7 +328,6 @@ span.picture {
   background-size:cover;
   position:relative;
   height: 75vh;
-  padding: 0px !important;
 }
 
 #content{
@@ -371,11 +370,14 @@ body {
 
 .images{
   img {
-   width: 30%;
-   padding: 1px;
+   width: 100%;
   }
   p {
     color: black;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    margin-left: 20%;
+    margin-right: 20%;
   }
 }
 .welcome {
