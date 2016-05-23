@@ -1,9 +1,27 @@
 <% provide(:title, "About Get Fit") %>
 
 <div class = "description">
-  <p> How to use Get Fit </p>
+  <h1> How to use Get Fit </h1>
 
-  <p> Get Fit is not just for logging your accomplishments alone. It is the opposite. It is designed as a social network where you can achieve your weight loss/healthy body aspirations with your friends. </p>
+  <h3> Creating Profile </h3>
+  <p> Get Fit is built to allow users to log the foods they eat while connecting with individuals that have similar goals, whether new or old friends. </p>
+
+  <p> First sign up for an account by going to the <%= link_to "Sign up", new_user_path %> link located in the center of the screen. </br>
+    After you have created an account, you must verify this account by looking for the verification email in your inbox. Then, follow the link back to the site and you can start!
+  </p>
+
+  <p> Once an account has been set up, you can start to enter your information. Click on the <%= link_to "MY PROFILE", current_user %> link on the top bar to view your current profile. </p>
+
+  <h3> Logging Weight </h3>
+
+  <p> Your profile should display an entry bar on the right with a statement asking you to enter your first weight. Enter this number and click "add weight".As you add future weights, a graph will appear, allowing you to view your historical progress. </p>
+
+  <p> You can also log what you have eaten over time. Below the weight section, you should see an empty table labeled "Foods" with a statement indication "You have consumed 0 calories today!" Click on add food and it will take you to a page with a search bar where you can search for what you have consumed today. After clicking search, scroll down to see all of your matches. After you find the correct match, look at the serving size. Enter how many servings you consumed and click "Add to today's food". This will redirect to your profile once more. If you scroll down you will see your new added food as well as the total number of calories you have consumed today. </p>
+
+  <p> Now I will get to the social aspects of the site. If you go to your profile page, you can scroll down and see a section labeled "Comments". Here you can post comments on your page. Click on the top right at the link <%= link_to "MY FRIENDS", friends_path %> and you will see the statement "You haven't added any friends yet! Go to the Users page and add some new friends." Follow these instructions to get to a list of all the friends in the Get Fit network. Search for a specific user and click on their name to view their page. You will now see a button in the top right corner stating "Add Friend" as well as their current Get Fit progress below. Click this button and tada! You now have a friend! Go back to the page <%= link_to "MY FRIENDS", friends_path %> and you should now see this new friend listed. </p>
+
+  <p> Congratulations! You have finished your introduction to Get Fit. Now go on and explore! </p>
+
 </div>
 
 </br>
